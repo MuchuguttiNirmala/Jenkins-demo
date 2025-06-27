@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-pod-fail
+  namespace: dev-namespace
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      resources:
+        requests:
+          cpu: "2" # Exceeds the allowed limit (1)
+          memory: "2Gi" # Exceeds the allowed limit (1Gi)
+        limits:
+          cpu: "3" # Exceeds the allowed limit (1)
+          memory: "2Gi" # Exceeds the allowed limit (1Gi)
